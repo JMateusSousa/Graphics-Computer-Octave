@@ -16,10 +16,6 @@ function plot3D(form, color)
     grid;
     view(-37.5,30);
 
-    %camproj('perspective');
-    %camva(15);
-    %set(gcf,'Position',[300 200 800 600]);
-    %set(gca,'Position',[0 0 1 1]);
     v1 = get(gca,'CameraPosition');
     fprintf('camera position: %g %g %g\n',v1);
     v2 = get(gca,'CameraTarget');

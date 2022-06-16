@@ -2,7 +2,7 @@ addpath('Functions')
 
 %create cube
 cube = createBox(2.5, 2.5, 2.5);
-cube = translation(cube, [-1, -1, 0]);
+cube = translation(cube, [-1.25, -1.25, 0]);
 
 plot3D(cube, 'r');
 figure;

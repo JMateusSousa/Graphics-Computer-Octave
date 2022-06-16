@@ -1,17 +1,20 @@
-function finalForm = project(initialForm, axle)
+function finalForm = project(initialForm, point)
     finalForm = initialForm;
-    if(axle == 1)
-        mt = [1 0 0 1; 0 0 0 1; 0 0 1 1; 0 0 0 1];
-    else if (axle == 2)
-            mt = [0 0 0 1; 0 1 0 1; 0 0 1 1; 0 0 0 1];
-        else
-            mt = [1 0 0 1; 0 1 0 1; 0 0 0 1; 0 0 0 1];
-        end
-    end
+    mt = [1 0 0 point(1);
+          0 1 0 point(2);
+          0 0 1 0;
+          0 0 0 1] * [1 0 0 0;
+                      0 1 0 0;
+                      0 0 1 0;
+                      0 0 -(1/point(3)) 1] * [1 0 0 -point(1);
+                                       0 1 0 -point(2);
+                                       0 0 1 0;
+                                       0 0 0 1];
+
+    mt(3,3) = 0;
 
     vertices = initialForm.vertices;
-    finalForm.vertices = vertices * mt;
+    finalForm.vertices = (mt * vertices')';
     finalForm.edges = createEdges(finalForm);
-
 end
 
